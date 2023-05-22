@@ -1,0 +1,27 @@
+<p>This form is easily adaptable to the customer's specific POC needs.</p>
+<br />
+<br/>
+<form [formGroup]="exampleForm" (ngSubmit)="onSubmit()">
+  <table>
+    <tr>
+      <td><label for="state">Send To:</label></td>
+      <td><input id="state" type="text" formControlName="sendTo"></td>
+    </tr>
+  <br>
+    <tr>
+      <td><label for="numberEmployees">Input 2:</label></td>
+      <td><input id="numberEmployees" type="text" formControlName="input1"></td>
+    </tr>
+  <br>
+    <tr>
+      <td><label for="formType">Input 3:</label></td>
+      <td><input id="formType" type="text" formControlName="input2"></td>
+    </tr>
+    <br>
+    <tr><td></td><td><button type="submit" [disabled]="!exampleForm.valid">Sign Up</button></td></tr>
+  </table>
+
+</form>
+
+
+

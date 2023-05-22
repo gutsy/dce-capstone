@@ -2,21 +2,19 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {PracticeTestFormComponent} from './practice-test-form/practice-test-form.component';
+import {ExampleFormComponent} from './example-form/example-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {NgxSpinnerModule} from "ngx-spinner";
 
 @NgModule({
     declarations: [
         AppComponent,
-        PracticeTestFormComponent
+        ExampleFormComponent
     ],
     imports: [
         BrowserModule,
         ReactiveFormsModule,
-        HttpClientModule,
-        NgxSpinnerModule
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
