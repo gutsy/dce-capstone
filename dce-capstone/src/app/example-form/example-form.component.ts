@@ -19,28 +19,41 @@ export class ExampleFormComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
                 private flowService: FlowServiceService) {
         this.exampleForm = this.formBuilder.group({
-            sendTo: ['', Validators.required],
-            input1: [''],
+            sendTo: ['', [Validators.required, Validators.email]],
+            name: [''],
             input2: ['']
         });
     }
 
     onSubmit(): void {
-        this.demoPayload.payload.sendAgreementTo = this.exampleForm.controls['sendTo'].value;
+        this.populatePayload();
         let call = this.flowService.makeAgreement(this.flowUrl, this.demoPayload);
         console.log('starting call...');
         call.subscribe(data => {
             console.log(data);
-            if (data.status === 200) {
+            if (data.status === 202) {
                 //delay is handled in the Power Automate flow
                 alert("Your Form Has Been Sent.");
                 this.exampleForm.reset();
+            } else if (data.status === 200){
+                if (data.body) {
+                    // @ts-ignore
+                    window.location.href = data.body[0].esignUrl; //the redirect from your site
+                }
             }
         }, error => {
             console.log(error);
             alert('There has been an error. How embarrassing.');
         });
 
+    }
+
+    populatePayload(): void {
+        this.demoPayload.payload.sendAgreementTo = this.exampleForm.controls['sendTo'].value;
+        if (this.exampleForm.controls['name'].value) {
+            console.log('setting the name to' + this.exampleForm.controls['name'].value)
+            this.demoPayload.payload.name = this.exampleForm.controls['name'].value;
+        }
     }
 
     ngOnInit(): void {
