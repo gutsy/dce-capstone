@@ -4,7 +4,7 @@
 <form [formGroup]="exampleForm" (ngSubmit)="onSubmit()">
   <table>
     <tr>
-      <td><label for="sendTo">Send To:</label></td>
+      <td><label for="sendTo">Signer Email:</label></td>
       <td><input id="sendTo" type="text" formControlName="sendTo"></td>
     </tr>
   <br>
@@ -14,8 +14,8 @@
     </tr>
   <br>
     <tr>
-      <td><label for="input2">Input 2:</label></td>
-      <td><input id="input2" type="text" formControlName="input2"></td>
+      <td><label for="cc">CC:</label></td>
+      <td><input id="cc" type="text" formControlName="cc"></td>
     </tr>
     <br>
     <tr><td></td><td><button type="submit" [disabled]="!exampleForm.valid">Sign Up</button></td></tr>

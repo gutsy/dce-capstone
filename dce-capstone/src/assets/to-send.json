@@ -1,6 +1,7 @@
 {
   "payload": {
     "sendAgreementTo": "guerrademo+signer@gmail.com",
-    "name": ""
+    "name": "",
+    "cc": ""
   }
 }

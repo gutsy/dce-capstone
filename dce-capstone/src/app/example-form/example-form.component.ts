@@ -21,7 +21,7 @@ export class ExampleFormComponent implements OnInit {
         this.exampleForm = this.formBuilder.group({
             sendTo: ['', [Validators.required, Validators.email]],
             name: [''],
-            input2: ['']
+            cc: ['', Validators.email]
         });
     }
 
@@ -53,6 +53,10 @@ export class ExampleFormComponent implements OnInit {
         if (this.exampleForm.controls['name'].value) {
             console.log('setting the name to' + this.exampleForm.controls['name'].value)
             this.demoPayload.payload.name = this.exampleForm.controls['name'].value;
+        }
+        if (this.exampleForm.controls['cc'].value) {
+            console.log('setting the cc to' + this.exampleForm.controls['cc'].value)
+            this.demoPayload.payload.cc = this.exampleForm.controls['cc'].value;
         }
     }
 
